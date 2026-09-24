@@ -41,6 +41,15 @@ public class CurrentAccount extends Account {
     // through a parent (Account) reference.
     @Override
     public boolean withdraw(double amount) {
+        // Validation: reject negative or zero withdrawal amounts.
+        // Without this check, a negative amount would subtract a negative
+        // number from the balance, effectively increasing it — a bug.
+        if (amount < Account.MIN_TRANSACTION_AMOUNT) {
+            System.out.println("Withdrawal denied: amount must be at least "
+                    + Account.MIN_TRANSACTION_AMOUNT);
+            return false;
+        }
+
         double balanceAfterWithdrawal = getBalance() - amount;
 
         // type conversion example: casting double to int for a quick display value

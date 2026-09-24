@@ -5,6 +5,7 @@ import model.AccountType;
 import model.CurrentAccount;
 import model.Customer;
 import model.SavingsAccount;
+import model.Transactable;
 import repository.AccountRepository;
 
 /**
@@ -23,6 +24,13 @@ public class BankService {
     // Creates a new account based on the given AccountType
     public Account createAccount(String accountNumber, double initialDeposit,
                                   Customer customer, AccountType type) {
+
+        // Validation: reject duplicate account numbers
+        if (repository.findByAccountNumber(accountNumber) != null) {
+            System.out.println("Account number already exists.");
+            return null;
+        }
+
         Account newAccount;
 
         // switch statement based on enum value
@@ -47,6 +55,11 @@ public class BankService {
         if (account == null) {
             return false;
         }
+        if (amount < Account.MIN_TRANSACTION_AMOUNT) {
+            System.out.println("Deposit denied: amount must be at least "
+                    + Account.MIN_TRANSACTION_AMOUNT);
+            return false;
+        }
         account.deposit(amount);
         return true;
     }
@@ -55,6 +68,11 @@ public class BankService {
     public boolean deposit(String accountNumber, double amount, String remarks) {
         Account account = repository.findByAccountNumber(accountNumber);
         if (account == null) {
+            return false;
+        }
+        if (amount < Account.MIN_TRANSACTION_AMOUNT) {
+            System.out.println("Deposit denied: amount must be at least "
+                    + Account.MIN_TRANSACTION_AMOUNT);
             return false;
         }
         System.out.println("Remark: " + remarks);
@@ -71,7 +89,13 @@ public class BankService {
             System.out.println("Account not found.");
             return false;
         }
-        return account.withdraw(amount);
+
+        // Demonstrates accessing the account through an interface reference.
+        // Transactable is the interface; Account implements it; here
+        // transactionAccount is an interface reference pointing to an
+        // Account object (SavingsAccount or CurrentAccount at runtime).
+        Transactable transactionAccount = account;
+        return transactionAccount.withdraw(amount);
     }
 
     // Transfer money between two accounts
