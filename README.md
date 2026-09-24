@@ -29,4 +29,4 @@ to its exact location in the code.
 
 ## Author
 
-Manuraj
+Manaswini K R
