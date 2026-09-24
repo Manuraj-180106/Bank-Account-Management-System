@@ -22,7 +22,18 @@ location in the codebase.
 | 15 | super | SavingsAccount, CurrentAccount constructors & withdraw() | super(...), super.withdraw(amount) |
 | 16 | Overriding + dynamic binding | BankController.displayAllAccounts() | Account acc loop calling overridden toString() |
 | 17 | Abstract class/method | Account.java | public abstract double calculateInterest(); |
-| 18 | Interface via reference | Account implements Transactable | Used via Account/Transactable typed calls |
+| 18 | Interface via reference | Account implements Transactable (Account.java); explicit reference in BankService.withdraw() | `Transactable transactionAccount = account; transactionAccount.withdraw(amount);` | 
 | 19 | toString()/equals() | Account, SavingsAccount, CurrentAccount, Customer, Transaction | All override toString(); Customer overrides equals() |
 | 20 | final method/class | Account.java | public final void displayBankName() with justifying comment |
 | 21 | 2+ packages, imports | Whole project | model, repository, service, controller, main - 5 packages |
+
+## Validation Improvements
+
+The following validations were added after an initial code review to 
+strengthen correctness:
+- `CurrentAccount.withdraw()` now rejects negative or zero withdrawal 
+  amounts before performing any balance calculation.
+- `BankService.createAccount()` now rejects duplicate account numbers.
+- `BankService.deposit()` now rejects negative or zero deposit amounts.
+- `BankService.withdraw()` now demonstrates an explicit interface 
+  reference (`Transactable transactionAccount = account;`).
