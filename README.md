@@ -15,6 +15,25 @@ This project simulates a simple banking system where users can create accounts, 
 
 ## Project Structure
 
+Bank-Account-Management-System/
+└── src/
+├── main/
+│ └── Main.java
+├── model/
+│ ├── AccountType.java
+│ ├── Transactable.java
+│ ├── Account.java
+│ ├── SavingsAccount.java
+│ ├── CurrentAccount.java
+│ ├── Customer.java
+│ └── Transaction.java
+├── repository/
+│ └── AccountRepository.java
+├── service/
+│ └── BankService.java
+└── controller/
+└── BankController.java
+
 
 ## Data Flow Diagram
 +-----------------------------------------------------------+
