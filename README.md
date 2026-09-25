@@ -1,91 +1,69 @@
 # Bank Account Management System
 
-A console-based Java application demonstrating core Object-Oriented 
-Programming principles, developed as a mini-project for the OOPS Java 
-practical course.
+A console-based Java application demonstrating core Object-Oriented Programming principles, developed as a mini-project for the OOPS Java practical course.
 
 ## Student Details
 
 - **Name:** Manaswini K R
 - **Course:** B.Sc. BStCs, 5th Semester
 - **University:** REVA University
-- **Subject:** OOPS (Java)
+- **Subject:** OOPS Java
 
 ## Overview
 
-This project simulates a simple banking system where users can create 
-accounts, deposit/withdraw money, check balances, transfer funds between 
-accounts, and view account details — all through a console menu.
+This project simulates a simple banking system where users can create accounts, deposit/withdraw money, check balances, transfer funds between accounts, and view account details — all through a console menu.
 
 ## Project Structure
-Bank-Account-Management-System/
-└── src/
-├── main/
-│ └── Main.java → Application entry point
-├── model/
-│ ├── AccountType.java → Enum (SAVINGS, CURRENT)
-│ ├── Transactable.java → Interface (deposit, withdraw)
-│ ├── Account.java → Abstract base class
-│ ├── SavingsAccount.java → Extends Account
-│ ├── CurrentAccount.java → Extends Account
-│ ├── Customer.java → Customer details
-│ └── Transaction.java → Transaction record
-├── repository/
-│ └── AccountRepository.java → In-memory data storage
-├── service/
-│ └── BankService.java → Business logic
-└── controller/
-└── BankController.java → Console menu & user I/O
 
 
 ## Data Flow Diagram
-┌─────────────────────────────────────────────────────────┐
-│                      USER (Console)                     │
-└───────────────────────┬─────────────────────────────────┘
-                        │ types menu choice / data
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│  main/Main.java                                         │
-│  - Entry point                                          │
-│  - Creates: AccountRepository → BankService → Controller│
-│  - Calls controller.start()                             │
-└───────────────────────┬─────────────────────────────────┘
-                        │ hands control to
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│  controller/BankController.java                         │
-│  - Displays menu (System.out)                           │
-│  - Reads input (Scanner)                                │
-│  - NO business logic here                               │
-│  - Calls BankService methods                            │
-└───────────────────────┬─────────────────────────────────┘
-                        │ passes clean data (e.g. accNo, amount)
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│  service/BankService.java                               │
-│  - All business rules live here                         │
-│  - Validates duplicates, negative amounts, etc.         │
-│  - Decides SAVINGS vs CURRENT (switch on AccountType)   │
-│  - Calls AccountRepository methods                      │
-└───────────────────────┬─────────────────────────────────┘
-                        │ asks repository to store/find
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│  repository/AccountRepository.java                      │
-│  - Pure storage layer                                   │
-│  - Holds Account[] accounts array                       │
-│  - addAccount(), findByAccountNumber(), getAllAccounts()│
-│  - NO business rules, NO I/O                            │
-└───────────────────────┬─────────────────────────────────┘
-                        │ stores/retrieves
-                        ▼
-┌─────────────────────────────────────────────────────────┐
-│  model/ (Account, SavingsAccount, CurrentAccount,       │
-│       Customer, Transaction, AccountType, Transactable) │
-│  - The actual data + object behavior                    │
-│  - Account is abstract, implements Transactable         │
-│  - SavingsAccount / CurrentAccount extend Account       │
-└─────────────────────────────────────────────────────────┘
++-----------------------------------------------------------+
+| USER (Console) |
++---------------------------+-------------------------------+
+| types menu choice / data
+v
++-----------------------------------------------------------+
+| main/Main.java |
+| - Entry point |
+| - Creates: AccountRepository -> BankService -> Controller |
+| - Calls controller.start() |
++---------------------------+-------------------------------+
+| hands control to
+v
++-----------------------------------------------------------+
+| controller/BankController.java |
+| - Displays menu (System.out) |
+| - Reads input (Scanner) |
+| - NO business logic here |
+| - Calls BankService methods |
++---------------------------+-------------------------------+
+| passes clean data (accNo, amount)
+v
++-----------------------------------------------------------+
+| service/BankService.java |
+| - All business rules live here |
+| - Validates duplicates, negative amounts, etc. |
+| - Decides SAVINGS vs CURRENT (switch on AccountType) |
+| - Calls AccountRepository methods |
++---------------------------+-------------------------------+
+| asks repository to store/find
+v
++-----------------------------------------------------------+
+| repository/AccountRepository.java |
+| - Pure storage layer |
+| - Holds Account[] accounts array |
+| - addAccount(), findByAccountNumber(), getAllAccounts() |
+| - NO business rules, NO I/O |
++---------------------------+-------------------------------+
+| stores/retrieves
+v
++-----------------------------------------------------------+
+| model/ (Account, SavingsAccount, CurrentAccount, |
+| Customer, Transaction, AccountType, Transactable) |
+| - The actual data + object behavior |
+| - Account is abstract, implements Transactable |
+| - SavingsAccount / CurrentAccount extend Account |
++-----------------------------------------------------------+
 
 
 ## Features
@@ -101,11 +79,11 @@ Bank-Account-Management-System/
 ## How to Run
 
 ### Using an IDE (e.g. VS Code)
+
 1. Clone this repository
 2. Open the folder in VS Code (with the Java Extension Pack installed)
 3. Open `src/main/Main.java`
-4. Click the **Run** button above the `main` method, or right-click → 
-   **Run Java**
+4. Click the **Run** button above the `main` method, or right-click → **Run Java**
 
 ### Using plain javac/java commands
 cd src
@@ -115,17 +93,14 @@ java -cp out main.Main
 
 ## OOP Concepts Demonstrated
 
-This project demonstrates 21 core Java/OOP concepts including encapsulation, 
-inheritance, polymorphism (method overriding + dynamic binding), abstraction 
-(abstract classes and interfaces), constructor/method overloading, static 
-members, final constants/methods, enums, arrays of objects, and more.
+This project demonstrates 21 core Java/OOP concepts including encapsulation, inheritance, polymorphism (method overriding + dynamic binding), abstraction (abstract classes and interfaces), constructor/method overloading, static members, final constants/methods, enums, arrays of objects, and more.
 
-See [REQUIREMENTS.md](REQUIREMENTS.md) for the full mapping of each concept 
-to its exact location in the code.
+See [REQUIREMENTS.md](REQUIREMENTS.md) for the full mapping of each concept to its exact location in the code.
 
 ## Testing
 
 The following scenarios were tested and verified working:
+
 - Savings account minimum-balance withdrawal rule
 - Successful savings withdrawal within limit
 - Current account overdraft within limit
