@@ -138,46 +138,46 @@ BankController --> BankService
                              | types menu choice / data
                              v
 +-----------------------------------------------------------+
-|  main/Main.java                                            |
-|  - Entry point                                              |
-|  - Creates: AccountRepository -> BankService -> Controller  |
-|  - Calls controller.start()                                  |
+|  main/Main.java                                           |
+|  - Entry point                                            |
+|  - Creates: AccountRepository -> BankService -> Controller|
+|  - Calls controller.start()                               |
 +---------------------------+-------------------------------+
                              | hands control to
                              v
 +-----------------------------------------------------------+
-|  controller/BankController.java                             |
-|  - Displays menu (System.out)                                |
-|  - Reads input (Scanner)                                      |
-|  - NO business logic here                                      |
-|  - Calls BankService methods                                    |
+|  controller/BankController.java                           |
+|  - Displays menu (System.out)                             |
+|  - Reads input (Scanner)                                  |
+|  - NO business logic here                                 |
+|  - Calls BankService methods                              |
 +---------------------------+-------------------------------+
                              | passes clean data (accNo, amount)
                              v
 +-----------------------------------------------------------+
-|  service/BankService.java                                   |
-|  - All business rules live here                               |
-|  - Validates duplicates, negative amounts, etc.                 |
-|  - Decides SAVINGS vs CURRENT (switch on AccountType)             |
-|  - Calls AccountRepository methods                                  |
+|  service/BankService.java                                 |
+|  - All business rules live here                           |
+|  - Validates duplicates, negative amounts, etc.           |
+|  - Decides SAVINGS vs CURRENT (switch on AccountType)     |
+|  - Calls AccountRepository methods                        |
 +---------------------------+-------------------------------+
                              | asks repository to store/find
                              v
 +-----------------------------------------------------------+
-|  repository/AccountRepository.java                           |
-|  - Pure storage layer                                          |
-|  - Holds Account[] accounts array                                |
-|  - addAccount(), findByAccountNumber(), getAllAccounts()           |
-|  - NO business rules, NO I/O                                        |
+|  repository/AccountRepository.java                        |
+|  - Pure storage layer                                     |
+|  - Holds Account[] accounts array                         |
+|  - addAccount(), findByAccountNumber(), getAllAccounts()  |
+|  - NO business rules, NO I/O                              |
 +---------------------------+-------------------------------+
                              | stores/retrieves
                              v
 +-----------------------------------------------------------+
-|  model/ (Account, SavingsAccount, CurrentAccount,             |
-|          Customer, Transaction, AccountType, Transactable)      |
-|  - The actual data + object behavior                              |
-|  - Account is abstract, implements Transactable                     |
-|  - SavingsAccount / CurrentAccount extend Account                     |
+|  model/ (Account, SavingsAccount, CurrentAccount,         |
+|          Customer, Transaction, AccountType, Transactable)|
+|  - The actual data + object behavior                      |
+|  - Account is abstract, implements Transactable           |
+|  - SavingsAccount / CurrentAccount extend Account         |
 +-----------------------------------------------------------+
 ```
 
