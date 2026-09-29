@@ -34,6 +34,8 @@ Bank-Account-Management-System/
 │   │   └── BankService.java
 │   └── controller/
 │       └── BankController.java
+├── docs/
+│   └── architecture-diagram.png
 ├── README.md
 └── REQUIREMENTS.md
 ```
@@ -138,48 +140,54 @@ BankController --> BankService
                              | types menu choice / data
                              v
 +-----------------------------------------------------------+
-|  main/Main.java                                           |
-|  - Entry point                                            |
-|  - Creates: AccountRepository -> BankService -> Controller|
-|  - Calls controller.start()                               |
+|  main/Main.java                                            |
+|  - Entry point                                              |
+|  - Creates: AccountRepository -> BankService -> Controller  |
+|  - Calls controller.start()                                  |
 +---------------------------+-------------------------------+
                              | hands control to
                              v
 +-----------------------------------------------------------+
-|  controller/BankController.java                           |
-|  - Displays menu (System.out)                             |
-|  - Reads input (Scanner)                                  |
-|  - NO business logic here                                 |
-|  - Calls BankService methods                              |
+|  controller/BankController.java                             |
+|  - Displays menu (System.out)                                |
+|  - Reads input (Scanner)                                      |
+|  - NO business logic here                                      |
+|  - Calls BankService methods                                    |
 +---------------------------+-------------------------------+
                              | passes clean data (accNo, amount)
                              v
 +-----------------------------------------------------------+
-|  service/BankService.java                                 |
-|  - All business rules live here                           |
-|  - Validates duplicates, negative amounts, etc.           |
-|  - Decides SAVINGS vs CURRENT (switch on AccountType)     |
-|  - Calls AccountRepository methods                        |
+|  service/BankService.java                                   |
+|  - All business rules live here                               |
+|  - Validates duplicates, negative amounts, etc.                 |
+|  - Decides SAVINGS vs CURRENT (switch on AccountType)             |
+|  - Calls AccountRepository methods                                  |
 +---------------------------+-------------------------------+
                              | asks repository to store/find
                              v
 +-----------------------------------------------------------+
-|  repository/AccountRepository.java                        |
-|  - Pure storage layer                                     |
-|  - Holds Account[] accounts array                         |
-|  - addAccount(), findByAccountNumber(), getAllAccounts()  |
-|  - NO business rules, NO I/O                              |
+|  repository/AccountRepository.java                           |
+|  - Pure storage layer                                          |
+|  - Holds Account[] accounts array                                |
+|  - addAccount(), findByAccountNumber(), getAllAccounts()           |
+|  - NO business rules, NO I/O                                        |
 +---------------------------+-------------------------------+
                              | stores/retrieves
                              v
 +-----------------------------------------------------------+
-|  model/ (Account, SavingsAccount, CurrentAccount,         |
-|          Customer, Transaction, AccountType, Transactable)|
-|  - The actual data + object behavior                      |
-|  - Account is abstract, implements Transactable           |
-|  - SavingsAccount / CurrentAccount extend Account         |
+|  model/ (Account, SavingsAccount, CurrentAccount,             |
+|          Customer, Transaction, AccountType, Transactable)      |
+|  - The actual data + object behavior                              |
+|  - Account is abstract, implements Transactable                     |
+|  - SavingsAccount / CurrentAccount extend Account                     |
 +-----------------------------------------------------------+
 ```
+
+## 9a. Architecture Diagram (Visual)
+
+![Architecture Diagram](docs/architecture-diagram.png)
+
+This diagram shows the full request/response cycle: the console user enters choices, `Main.java` wires up the layers, `BankController` manages menu and input, `BankService` handles all banking operations, `AccountRepository` stores accounts, and the model classes (`Account`, `SavingsAccount`, `CurrentAccount`, `Customer`, `Transaction`, `AccountType`, `Transactable`) hold the actual data and behavior.
 
 ## 10. Frontend Decision
 
