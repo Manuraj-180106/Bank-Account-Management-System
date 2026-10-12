@@ -114,6 +114,129 @@ The demonstrated flow includes:
 - Viewing all accounts with total account count
 - Exiting the application
 
+## 7a. Sample Console Output
+
+A captured run of the application from the terminal:
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 1
+Enter account number: 001
+Enter customer name: A L MADHU
+Enter customer ID: 1961
+Enter phone number: 9886895660
+Enter initial deposit: 3000000
+Enter account type (SAVINGS/CURRENT): SAVINGS
+Account created successfully!
+Account Number: 001 | Balance: 3000000.00
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 2
+Enter account number: 001
+Enter amount to deposit: 500000
+Deposit successful.
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 3
+Enter account number: 001
+Enter amount to withdraw: 500000
+Withdrawal successful.
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 4
+Enter account number: 001
+Current Balance: 3000000.00
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 5
+Enter account number: 001
+=== SecureTrust Bank ===
+SavingsAccount{accountNumber='001', balance=3000000.0, interestRate=4.0}
+Interest/Return: 120000.00
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 6
+Enter sender account number: 001
+Enter receiver account number: 002
+Enter amount to transfer: 500000
+One or both accounts not found.
+Transfer failed.
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 7
+
+--- All Accounts ---
+SavingsAccount{accountNumber='001', balance=3000000.0, interestRate=4.0}
+Total accounts created: 1
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
+Enter your choice: 8
+Thank you for banking with us!
+
+
 ## 8. Class Structure
 
 ```
