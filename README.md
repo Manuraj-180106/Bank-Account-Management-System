@@ -234,7 +234,7 @@ Transfer successful.
 4. Check Balance
 5. Display Account Details
 6. Transfer Money
-7. Display All Accounts
+7. Display All Accountsdir docs\screenshots
 8. Exit
 Enter your choice: 7
 
