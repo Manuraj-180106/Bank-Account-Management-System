@@ -146,6 +146,25 @@ Account Number: 001 | Balance: 3000000.00
 6. Transfer Money
 7. Display All Accounts
 8. Exit
+Enter your choice: 1
+Enter account number: 002
+Enter customer name: A L MOHAN
+Enter customer ID: 1962
+Enter phone number: 9886895661
+Enter initial deposit: 500000
+Enter account type (SAVINGS/CURRENT): SAVINGS
+Account created successfully!
+Account Number: 002 | Balance: 500000.00
+
+===== SecureTrust Bank =====
+1. Create Account
+2. Deposit Money
+3. Withdraw Money
+4. Check Balance
+5. Display Account Details
+6. Transfer Money
+7. Display All Accounts
+8. Exit
 Enter your choice: 2
 Enter account number: 001
 Enter amount to deposit: 500000
@@ -206,8 +225,7 @@ Enter your choice: 6
 Enter sender account number: 001
 Enter receiver account number: 002
 Enter amount to transfer: 500000
-One or both accounts not found.
-Transfer failed.
+Transfer successful.
 
 ===== SecureTrust Bank =====
 1. Create Account
@@ -221,8 +239,9 @@ Transfer failed.
 Enter your choice: 7
 
 --- All Accounts ---
-SavingsAccount{accountNumber='001', balance=3000000.0, interestRate=4.0}
-Total accounts created: 1
+SavingsAccount{accountNumber='001', balance=2500000.0, interestRate=4.0}
+SavingsAccount{accountNumber='002', balance=1000000.0, interestRate=4.0}
+Total accounts created: 2
 
 ===== SecureTrust Bank =====
 1. Create Account
@@ -235,6 +254,46 @@ Total accounts created: 1
 8. Exit
 Enter your choice: 8
 Thank you for banking with us!
+
+## 7b. Sample Output Screenshots
+
+The screenshots below were captured from a real run of the application.
+
+**1. Creating Account No. 1 (Savings)**
+
+![Creating account 1](docs/screenshots/Creating_account_No1.png)
+
+**2. Creating Account No. 2 (Savings)**
+
+![Creating account 2](docs/screenshots/Creating_account_No2.png)
+
+**3. Depositing money**
+
+![Deposit](docs/screenshots/Deposit_of_amount.png)
+
+**4. Withdrawing money**
+
+![Withdrawal](docs/screenshots/Withdrawal_of_amount.png)
+
+**5. Checking balance**
+
+![Check balance](docs/screenshots/Checking_balance.png)
+
+**6. Displaying account details with interest calculation**
+
+![Account details](docs/screenshots/Displaying_account_details.png)
+
+**7. Transferring money between accounts**
+
+![Transfer](docs/screenshots/Transferring_Money.png)
+
+**8. Displaying all accounts**
+
+![All accounts](docs/screenshots/Display_of_accounts.png)
+
+**9. Exiting the application**
+
+![Exit](docs/screenshots/Exit_message.png)
 
 
 ## 8. Class Structure
